@@ -32,93 +32,571 @@
     <!-- ==================== LEFT COLUMN (40%) ==================== -->
     <div class="sheet-left">
 
-        <div class="ability-grid">
+        <!-- ===== STATIC LEFT TOP ===== -->
+        <div class="static-left-top">
+            <div class="ability-grid">
 
-            <!-- STR -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_StrCheck"
-                        value="/roll @{check_roll} + @{str_mod}">
-                    STR
-                </button>
-                <div class="ability-score">
-                    <span name="attr_str_mod_display"></span>
+                <!-- STR -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_StrCheck"
+                            value="/roll @{check_roll} + @{str_mod}">
+                        STR
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_str_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_str_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_str_score" class="ability-score-input" />
-            </div>
 
-            <!-- DEX -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_DexCheck"
-                        value="/roll @{check_roll} + @{dex_mod}">
-                    DEX
-                </button>
-                <div class="ability-score">
-                    <span name="attr_dex_mod_display"></span>
+                <!-- DEX -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_DexCheck"
+                            value="/roll @{check_roll} + @{dex_mod}">
+                        DEX
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_dex_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_dex_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_dex_score" class="ability-score-input" />
-            </div>
 
-            <!-- CON -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_ConCheck"
-                        value="/roll @{check_roll} + @{con_mod}">
-                    CON
-                </button>
-                <div class="ability-score">
-                    <span name="attr_con_mod_display"></span>
+                <!-- CON -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_ConCheck"
+                            value="/roll @{check_roll} + @{con_mod}">
+                        CON
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_con_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_con_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_con_score" class="ability-score-input" />
-            </div>
 
-            <!-- INT -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_IntCheck"
-                        value="/roll @{check_roll} + @{int_mod}">
-                    INT
-                </button>
-                <div class="ability-score">
-                    <span name="attr_int_mod_display"></span>
+                <!-- INT -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_IntCheck"
+                            value="/roll @{check_roll} + @{int_mod}">
+                        INT
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_int_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_int_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_int_score" class="ability-score-input" />
-            </div>
 
-            <!-- WIS -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_WisCheck"
-                        value="/roll @{check_roll} + @{wis_mod}">
-                    WIS
-                </button>
-                <div class="ability-score">
-                    <span name="attr_wis_mod_display"></span>
+                <!-- WIS -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_WisCheck"
+                            value="/roll @{check_roll} + @{wis_mod}">
+                        WIS
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_wis_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_wis_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_wis_score" class="ability-score-input" />
-            </div>
 
-            <!-- CHA -->
-            <div class="ability-box">
-                <button type="roll"
-                        class="ability-title"
-                        name="roll_ChaCheck"
-                        value="/roll @{check_roll} + @{cha_mod}">
-                    CHA
-                </button>
-                <div class="ability-score">
-                    <span name="attr_cha_mod_display"></span>
+                <!-- CHA -->
+                <div class="ability-box">
+                    <button type="roll"
+                            class="ability-title"
+                            name="roll_ChaCheck"
+                            value="/roll @{check_roll} + @{cha_mod}">
+                        CHA
+                    </button>
+                    <div class="ability-score">
+                        <span name="attr_cha_mod_display"></span>
+                    </div>
+                    <input type="number" name="attr_cha_score" class="ability-score-input" />
                 </div>
-                <input type="number" name="attr_cha_score" class="ability-score-input" />
-            </div>
 
+            </div>
         </div>
+
+        <!-- ===== PAGE CONTENT ===== -->
+        <div class="page page-core">
+            <!-- ==================== SKILLS SECTION ==================== -->
+            <div class="skills-section">
+                <div class="skill-top">
+                    <label class="skill-top-label">Skills</label>
+                </div>
+                
+                <div class="skill-info">
+                    <span class="skill-header">Prof</span>
+                    <span class="skill-header">Name</span>
+                    <span class="skill-header">Abi</span>
+                    <span class="skill-header">Mod</span>
+                    <span class="skill-header">Sum</span>
+                </div>
+
+                <div class="skills-list">
+                    <!-- Acrobatics -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_acrobatics_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_acrobatics_prof" value="1" />
+                            <input type="radio" name="attr_skill_acrobatics_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_acrobatics"
+                                value="/roll @{check_roll} + @{skill_acrobatics_sum_display}">
+                            Acrobatics
+                        </button>
+                        <select name="attr_skill_acrobatics_ability" class="skill-ability">
+                            <option value="dex" selected>DEX</option>
+                            <option value="str">STR</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_acrobatics_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_acrobatics_sum_display">+0</span>
+                    </div>
+
+                    <!-- Animal Handling -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_animal_handling_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_animal_handling_prof" value="1" />
+                            <input type="radio" name="attr_skill_animal_handling_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_animal_handling"
+                                value="/roll @{check_roll} + @{skill_animal_handling_sum_display}">
+                            Animal Handling
+                        </button>
+                        <select name="attr_skill_animal_handling_ability" class="skill-ability">
+                            <option value="wis" selected>WIS</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_animal_handling_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_animal_handling_sum_display">+0</span>
+                    </div>
+
+                    <!-- Arcana -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_arcana_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_arcana_prof" value="1" />
+                            <input type="radio" name="attr_skill_arcana_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_arcana"
+                                value="/roll @{check_roll} + @{skill_arcana_sum_display}">
+                            Arcana
+                        </button>
+                        <select name="attr_skill_arcana_ability" class="skill-ability">
+                            <option value="int" selected>INT</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_arcana_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_arcana_sum_display">+0</span>
+                    </div>
+
+                    <!-- Athletics -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_athletics_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_athletics_prof" value="1" />
+                            <input type="radio" name="attr_skill_athletics_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_athletics"
+                                value="/roll @{check_roll} + @{skill_athletics_sum_display}">
+                            Athletics
+                        </button>
+                        <select name="attr_skill_athletics_ability" class="skill-ability">
+                            <option value="str" selected>STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_athletics_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_athletics_sum_display">+0</span>
+                    </div>
+
+                    <!-- Deception -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_deception_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_deception_prof" value="1" />
+                            <input type="radio" name="attr_skill_deception_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_deception"
+                                value="/roll @{check_roll} + @{skill_deception_sum_display}">
+                            Deception
+                        </button>
+                        <select name="attr_skill_deception_ability" class="skill-ability">
+                            <option value="cha" selected>CHA</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                        </select>
+                        <input type="number" name="attr_skill_deception_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_deception_sum_display">+0</span>
+                    </div>
+
+                    <!-- History -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_history_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_history_prof" value="1" />
+                            <input type="radio" name="attr_skill_history_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_history"
+                                value="/roll @{check_roll} + @{skill_history_sum_display}">
+                            History
+                        </button>
+                        <select name="attr_skill_history_ability" class="skill-ability">
+                            <option value="int" selected>INT</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_history_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_history_sum_display">+0</span>
+                    </div>
+
+                    <!-- Insight -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_insight_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_insight_prof" value="1" />
+                            <input type="radio" name="attr_skill_insight_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_insight"
+                                value="/roll @{check_roll} + @{skill_insight_sum_display}">
+                            Insight
+                        </button>
+                        <select name="attr_skill_insight_ability" class="skill-ability">
+                            <option value="wis" selected>WIS</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_insight_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_insight_sum_display">+0</span>
+                    </div>
+
+                    <!-- Intimidation -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_intimidation_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_intimidation_prof" value="1" />
+                            <input type="radio" name="attr_skill_intimidation_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_intimidation"
+                                value="/roll @{check_roll} + @{skill_intimidation_sum_display}">
+                            Intimidation
+                        </button>
+                        <select name="attr_skill_intimidation_ability" class="skill-ability">
+                            <option value="cha" selected>CHA</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                        </select>
+                        <input type="number" name="attr_skill_intimidation_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_intimidation_sum_display">+0</span>
+                    </div>
+
+                    <!-- Investigation -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_investigation_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_investigation_prof" value="1" />
+                            <input type="radio" name="attr_skill_investigation_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_investigation"
+                                value="/roll @{check_roll} + @{skill_investigation_sum_display}">
+                            Investigation
+                        </button>
+                        <select name="attr_skill_investigation_ability" class="skill-ability">
+                            <option value="int" selected>INT</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_investigation_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_investigation_sum_display">+0</span>
+                    </div>
+
+                    <!-- Medicine -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_medicine_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_medicine_prof" value="1" />
+                            <input type="radio" name="attr_skill_medicine_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_medicine"
+                                value="/roll @{check_roll} + @{skill_medicine_sum_display}">
+                            Medicine
+                        </button>
+                        <select name="attr_skill_medicine_ability" class="skill-ability">
+                            <option value="wis" selected>WIS</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_medicine_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_medicine_sum_display">+0</span>
+                    </div>
+
+                    <!-- Nature -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_nature_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_nature_prof" value="1" />
+                            <input type="radio" name="attr_skill_nature_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_nature"
+                                value="/roll @{check_roll} + @{skill_nature_sum_display}">
+                            Nature
+                        </button>
+                        <select name="attr_skill_nature_ability" class="skill-ability">
+                            <option value="int" selected>INT</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_nature_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_nature_sum_display">+0</span>
+                    </div>
+
+                    <!-- Perception -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_perception_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_perception_prof" value="1" />
+                            <input type="radio" name="attr_skill_perception_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_perception"
+                                value="/roll @{check_roll} + @{skill_perception_sum_display}">
+                            Perception
+                        </button>
+                        <select name="attr_skill_perception_ability" class="skill-ability">
+                            <option value="wis" selected>WIS</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_perception_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_perception_sum_display">+0</span>
+                    </div>
+
+                    <!-- Performance -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_performance_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_performance_prof" value="1" />
+                            <input type="radio" name="attr_skill_performance_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_performance"
+                                value="/roll @{check_roll} + @{skill_performance_sum_display}">
+                            Performance
+                        </button>
+                        <select name="attr_skill_performance_ability" class="skill-ability">
+                            <option value="cha" selected>CHA</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                        </select>
+                        <input type="number" name="attr_skill_performance_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_performance_sum_display">+0</span>
+                    </div>
+
+                    <!-- Persuasion -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_persuasion_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_persuasion_prof" value="1" />
+                            <input type="radio" name="attr_skill_persuasion_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_persuasion"
+                                value="/roll @{check_roll} + @{skill_persuasion_sum_display}">
+                            Persuasion
+                        </button>
+                        <select name="attr_skill_persuasion_ability" class="skill-ability">
+                            <option value="cha" selected>CHA</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                        </select>
+                        <input type="number" name="attr_skill_persuasion_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_persuasion_sum_display">+0</span>
+                    </div>
+
+                    <!-- Religion -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_religion_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_religion_prof" value="1" />
+                            <input type="radio" name="attr_skill_religion_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_religion"
+                                value="/roll @{check_roll} + @{skill_religion_sum_display}">
+                            Religion
+                        </button>
+                        <select name="attr_skill_religion_ability" class="skill-ability">
+                            <option value="int" selected>INT</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_religion_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_religion_sum_display">+0</span>
+                    </div>
+
+                    <!-- Sleight of Hand -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_sleight_of_hand_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_sleight_of_hand_prof" value="1" />
+                            <input type="radio" name="attr_skill_sleight_of_hand_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_sleight_of_hand"
+                                value="/roll @{check_roll} + @{skill_sleight_of_hand_sum_display}">
+                            Sleight of Hand
+                        </button>
+                        <select name="attr_skill_sleight_of_hand_ability" class="skill-ability">
+                            <option value="dex" selected>DEX</option>
+                            <option value="str">STR</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_sleight_of_hand_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_sleight_of_hand_sum_display">+0</span>
+                    </div>
+
+                    <!-- Stealth -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_stealth_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_stealth_prof" value="1" />
+                            <input type="radio" name="attr_skill_stealth_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_stealth"
+                                value="/roll @{check_roll} + @{skill_stealth_sum_display}">
+                            Stealth
+                        </button>
+                        <select name="attr_skill_stealth_ability" class="skill-ability">
+                            <option value="dex" selected>DEX</option>
+                            <option value="str">STR</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_stealth_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_stealth_sum_display">+0</span>
+                    </div>
+
+                    <!-- Survival -->
+                    <div class="skill-row">
+                        <div class="skill-prof-radio">
+                            <input type="radio" name="attr_skill_survival_prof" value="0" checked />
+                            <input type="radio" name="attr_skill_survival_prof" value="1" />
+                            <input type="radio" name="attr_skill_survival_prof" value="2" />
+                        </div>
+                        <button type="roll" 
+                                class="skill-name" 
+                                name="roll_skill_survival"
+                                value="/roll @{check_roll} + @{skill_survival_sum_display}">
+                            Survival
+                        </button>
+                        <select name="attr_skill_survival_ability" class="skill-ability">
+                            <option value="wis" selected>WIS</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                        <input type="number" name="attr_skill_survival_mod" class="skill-mod" value="0" />
+                        <span class="skill-sum" name="attr_skill_survival_sum_display">+0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page page-combat">Combat left content</div>
+        <div class="page page-inventory">Inventory left content</div>
+        <div class="page page-spells">Spells left content</div>
+        <div class="page page-bio">Bio left content</div>
+
     </div>
 
     <!-- ==================== RIGHT COLUMN (60%) ==================== -->
@@ -176,21 +654,16 @@
                         <input type="number" name="attr_level" class="level-input level-number" placeholder="Level" min="0" value="1" />
                     </div>
                 </fieldset>
-                <div class="levels-bottom">
                     <div class="levels-bottom">
                         <!-- EXP Tracker -->
                         <div class="exp-tracker">
                             <label class="exp-label">Experience</label>
-                            <input type="number"
-                                   name="attr_exp_current"
-                                   class="exp-input"
-                                   placeholder="Current" />
-                            <span class="exp-slash">/</span>
-                            <input type="number"
-                                   name="attr_exp_next"
-                                   class="exp-input"
-                                   list="exp-levels"
-                                   placeholder="To next Level" />
+                            <div class="exp-inputs-wrapper">
+                                <input type="number" name="attr_exp_current" class="exp-input" placeholder="Current" />
+                                <span class="exp-slash">/</span>
+                                <input type="number" name="attr_exp_next" class="exp-input" list="exp-levels" placeholder="To next Level" />
+                            </div>
+
                             <datalist id="exp-levels">
                                 <option value="0" label="Level 1: 0 XP">
                                 <option value="300" label="Level 2: 300 XP">
@@ -213,7 +686,7 @@
                                 <option value="305000" label="Level 19: 305,000 XP">
                                 <option value="355000" label="Level 20: 355,000 XP">
                             </datalist>
-                        </div>
+                        </div> 
                     
                         <!-- Character Level Total -->
                         <div class="character-level-total">
@@ -221,7 +694,6 @@
                             <span class="total-value" name="attr_character_level">0</span>
                         </div>
                     </div>
-                </div>
 
             </div>
         </div>
@@ -396,5 +868,104 @@
     // Calculate when items are removed
     on("remove:repeating_levels", () => {
         calculateCharacterLevel();
+    });
+
+    /* ==================== SKILLS CALCULATION ==================== */
+    const skillData = [
+        { name: "acrobatics", ability: "dex" },
+        { name: "animal_handling", ability: "wis" },
+        { name: "arcana", ability: "int" },
+        { name: "athletics", ability: "str" },
+        { name: "deception", ability: "cha" },
+        { name: "history", ability: "int" },
+        { name: "insight", ability: "wis" },
+        { name: "intimidation", ability: "cha" },
+        { name: "investigation", ability: "int" },
+        { name: "medicine", ability: "wis" },
+        { name: "nature", ability: "int" },
+        { name: "perception", ability: "wis" },
+        { name: "performance", ability: "cha" },
+        { name: "persuasion", ability: "cha" },
+        { name: "religion", ability: "int" },
+        { name: "sleight_of_hand", ability: "dex" },
+        { name: "stealth", ability: "dex" },
+        { name: "survival", ability: "wis" }
+    ];
+
+    const calculateSkillSum = (prof, abilityMod, profBonus, mod) => {
+        const profValue = parseInt(prof, 10) || 0;
+        const ability = parseInt(abilityMod, 10) || 0;
+        const profB = parseInt(profBonus, 10) || 0;
+        const modifier = parseInt(mod, 10) || 0;
+        
+        let profMultiplier = 0;
+        if (profValue === 1) profMultiplier = 1;      // Proficiency
+        if (profValue === 2) profMultiplier = 2;      // Expertise
+        
+        const total = ability + (profB * profMultiplier) + modifier;
+        return total;
+    };
+
+    const formatSkillSum = (sum) => {
+        return (sum >= 0 ? "+" : "") + sum;
+    };
+
+    const calculateAllSkills = () => {
+        getAttrs(["prof_bonus"], v => {
+            const profBonus = v.prof_bonus || 0;
+            const attrs = [];
+            
+            skillData.forEach(skill => {
+                attrs.push(
+                    `skill_${skill.name}_prof`,
+                    `skill_${skill.name}_ability`,
+                    `skill_${skill.name}_mod`
+                );
+            });
+            
+            getAttrs(attrs, skillV => {
+                const updates = {};
+                
+                skillData.forEach(skill => {
+                    const prof = skillV[`skill_${skill.name}_prof`] || "0";
+                    const abilityName = skillV[`skill_${skill.name}_ability`] || skill.ability;
+                    const mod = skillV[`skill_${skill.name}_mod`] || "0";
+                    
+                    getAttrs([`${abilityName}_mod`], abilityV => {
+                        const abilityMod = abilityV[`${abilityName}_mod`] || 0;
+                        const sum = calculateSkillSum(prof, abilityMod, profBonus, mod);
+                        
+                        updates[`skill_${skill.name}_sum`] = sum;
+                        updates[`skill_${skill.name}_sum_display`] = formatSkillSum(sum);
+                    });
+                });
+                
+                setAttrs(updates);
+            });
+        });
+    };
+
+    // Calculate skills when any skill attribute changes
+    skillData.forEach(skill => {
+        on(`change:skill_${skill.name}_prof change:skill_${skill.name}_ability change:skill_${skill.name}_mod`, () => {
+            calculateAllSkills();
+        });
+    });
+
+    // Recalculate when ability modifiers change
+    abilities.forEach(ability => {
+        on(`change:${ability}_mod`, () => {
+            calculateAllSkills();
+        });
+    });
+
+    // Recalculate when proficiency bonus changes
+    on("change:prof_bonus", () => {
+        calculateAllSkills();
+    });
+
+    // Calculate on sheet open
+    on("sheet:opened", () => {
+        calculateAllSkills();
     });
 </script>

@@ -1,56 +1,449 @@
-/* Header layout */
+/* ==================== HEADER ==================== */
 .sheet-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    width: 100%;
-}
-
-.logo-container {
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    padding: 5px 10px;
 }
 
 .sheet-logo {
-    width: 250px; /* whatever you want */
-    height: auto;
+    height: 60px;
 }
-
 
 .name-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-end;
 }
 
-.char-name {
-    font-size: 1.2em;
-    padding: 5px;
-    width: 220px;
+.name-label, .char-name {
+    text-align: right;
 }
 
-/* Page Selector Bar */
+/* ==================== PAGE SELECTOR ==================== */
 .pageSelector {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
     .pageSelector button {
         flex: 1;
-        margin: 0 4px;
-        padding: 8px 0;
-        font-size: 1em;
-        cursor: pointer;
+        margin: 0 2px;
+        padding: 6px;
     }
 
-/* Pages */
+/* ==================== DIVIDER ==================== */
+.page-divider {
+    height: 2px;
+    background: black;
+    margin: 10px 0;
+}
+
+/* ==================== MAIN LAYOUT ==================== */
+.sheet-main {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.sheet-left {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sheet-right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ==================== PAGE VISIBILITY ==================== */
 .page {
-    margin-top: 15px;
+    display: none;
+}
+
+input[name="attr_current_page"][value="core"] ~ .sheet-main .page-core,
+input[name="attr_current_page"][value="combat"] ~ .sheet-main .page-combat,
+input[name="attr_current_page"][value="inventory"] ~ .sheet-main .page-inventory,
+input[name="attr_current_page"][value="spells"] ~ .sheet-main .page-spells,
+input[name="attr_current_page"][value="bio"] ~ .sheet-main .page-bio {
+    display: block;
+}
+
+/* ==================== ABILITY SCORES ==================== */
+.ability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+}
+
+.ability-box {
+    background: #f7f7f7;
+    border: 2px solid #111;
+    border-radius: 6px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ability-title {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.ability-score {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #111;
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.ability-score-input {
+    width: 42px;
+    padding: 3px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* ==================== STATIC RIGHT TOP ==================== */
+.static-right-top {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 12px;
+    gap: 5px;
+    padding: 0 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==================== PROFICIENCY ==================== */
+.proficiency-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #111;
+    border-radius: 6px;
+    padding: 6px 8px;
+    background: #f7f7f7;
+    gap: 8px;
+    flex: 1;
+}
+
+.prof-label {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.prof-value {
+    border: 2px solid #111;
+    border-radius: 4px;
+    padding: 4px 6px;
+    background: #fff;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: center;
+    margin-left: auto;
+}
+
+/* ==================== ADV / DIS ==================== */
+.adv-dis-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #111;
+    border-radius: 6px;
+    padding: 6px 10px;
+    background: #f7f7f7;
+    gap: 6px;
+    flex: 1;
+}
+
+.adv-btn, .dis-btn {
+    border: none;
+    background: transparent;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: black;
+}
+
+.adv-dis-separator {
+    font-weight: 700;
+}
+
+/* Active Advantage / Disadvantage colors using attribute binding */
+input[name="attr_adv_state"][value="adv"] ~ * .adv-btn,
+.sheet-adv-active .adv-btn {
+    color: green;
+    -webkit-text-stroke: 0.5px black;
+}
+
+input[name="attr_adv_state"][value="dis"] ~ * .dis-btn,
+.sheet-dis-active .dis-btn {
+    color: red;
+    -webkit-text-stroke: 0.5px black;
+}
+
+/* ==================== CHARACTER INFO ROW ==================== */
+.character-info-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    border: 2px solid #111;
+    border-radius: 6px;
+    padding: 6px 8px;
+    background: #f7f7f7;
+    gap: 4px;
+}
+
+.info-label {
+    font-weight: 700;
+    font-size: 13px;
+    color: #111;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    align-self: center;
+}
+
+.info-input {
+    border: none;
+    border-bottom: 2px solid #111;
+    background: transparent;
+    padding: 4px 0;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    text-align: center;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    line-height: 1.4;
+    margin: 0;
+    height: auto;
+}
+
+.info-input:focus {
+    border-bottom-color: #333;
+}
+
+datalist {
+    display: none;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0; 
+}
+
+/* ==================== CHARACTER LEVELS BOX ==================== */
+.character-levels-box {
+    border: 2px solid #111;
+    border-radius: 6px;
+    padding: 8px;
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    min-height: 100px;
+}
+
+.levels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-height: 40px;
+}
+
+.level-entry {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.level-input {
+    border: none;
+    border-bottom: 2px solid #111;
+    background: transparent;
+    padding: 4px 0;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    text-align: center;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    line-height: 1.4;
+    margin: 0;
+    height: auto;
+    flex: 1;
+}
+
+.level-input:focus {
+    border-bottom-color: #333;
+}
+
+.level-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.level-number {
+    max-width: 60px;
+    flex: 0 0 60px;
+}
+
+/* Bottom wrapper for controls and total */
+.levels-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+    gap: 8px;
+}
+
+
+.levels-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.level-control-btn {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #111;
+    border-radius: 4px;
+    background: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.level-control-btn:hover {
+    background: #f7f7f7;
+}
+
+.character-level-total {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.total-label {
+    font-weight: 700;
+    font-size: 13px;
+    color: #111;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
+}
+
+.total-value {
+    border: 2px solid #111;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    min-width: 40px;
+    text-align: center;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+/* ==================== REPEATING SECTIONS ==================== */
+.repcontainer[data-groupname="repeating_levels"] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.repitem[data-groupname="repeating_levels"] {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+/* Hide the default Roll20 controls if you want to style them differently */
+.repcontrol[data-groupname="repeating_levels"] {
+    margin-top: 4px;
+}
+
+/* ==================== EXP TRACKER ==================== */
+.exp-tracker {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex: 1;
+}
+
+.exp-label {
+    font-weight: 700;
+    font-size: 13px;
+    color: #111;
+}
+
+.exp-input {
+    border: none;
+    border-bottom: 2px solid #111;
+    background: transparent;
+    padding: 4px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+.exp-input:focus {
+    border-bottom-color: #333;
+}
+
+.exp-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.exp-slash {
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
 }

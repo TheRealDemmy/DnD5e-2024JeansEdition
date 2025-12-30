@@ -1,14 +1,21 @@
+<!-- ==================== SHEET HEADER ==================== -->
 <div class="sheet-header">
     <div class="logo-container">
         <img src="https://raw.githubusercontent.com/TheRealDemmy/DnD5e-2024JeansEdition/main/images/DnD2024.jpg" class="sheet-logo">
     </div>
 
     <div class="name-container">
-        <label>Character Name</label>
+        <label class="name-label">Character Name</label>
         <input type="text" name="attr_characterName" class="char-name" />
     </div>
 </div>
 
+<!-- ==================== GLOBAL STATE ==================== -->
+<input type="hidden" name="attr_current_page" value="core" />
+<input type="hidden" name="attr_adv_state" value="none" />
+<input type="hidden" name="attr_check_roll" value="1d20" />
+
+<!-- ==================== PAGE SELECTOR ==================== -->
 <div class="pageSelector">
     <button type="action" name="act_core">Core</button>
     <button type="action" name="act_combat">Combat</button>
@@ -17,24 +24,377 @@
     <button type="action" name="act_bio">Bio</button>
 </div>
 
-<!-- Page Containers -->
+<div class="page-divider"></div>
 
-<div class="page core-page">
-    <!-- Core page content -->
+<!-- ==================== MAIN SHEET LAYOUT ==================== -->
+<div class="sheet-main">
+
+    <!-- ==================== LEFT COLUMN (40%) ==================== -->
+    <div class="sheet-left">
+
+        <div class="ability-grid">
+
+            <!-- STR -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_StrCheck"
+                        value="/roll @{check_roll} + @{str_mod}">
+                    STR
+                </button>
+                <div class="ability-score">
+                    <span name="attr_str_mod_display"></span>
+                </div>
+                <input type="number" name="attr_str_score" class="ability-score-input" />
+            </div>
+
+            <!-- DEX -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_DexCheck"
+                        value="/roll @{check_roll} + @{dex_mod}">
+                    DEX
+                </button>
+                <div class="ability-score">
+                    <span name="attr_dex_mod_display"></span>
+                </div>
+                <input type="number" name="attr_dex_score" class="ability-score-input" />
+            </div>
+
+            <!-- CON -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_ConCheck"
+                        value="/roll @{check_roll} + @{con_mod}">
+                    CON
+                </button>
+                <div class="ability-score">
+                    <span name="attr_con_mod_display"></span>
+                </div>
+                <input type="number" name="attr_con_score" class="ability-score-input" />
+            </div>
+
+            <!-- INT -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_IntCheck"
+                        value="/roll @{check_roll} + @{int_mod}">
+                    INT
+                </button>
+                <div class="ability-score">
+                    <span name="attr_int_mod_display"></span>
+                </div>
+                <input type="number" name="attr_int_score" class="ability-score-input" />
+            </div>
+
+            <!-- WIS -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_WisCheck"
+                        value="/roll @{check_roll} + @{wis_mod}">
+                    WIS
+                </button>
+                <div class="ability-score">
+                    <span name="attr_wis_mod_display"></span>
+                </div>
+                <input type="number" name="attr_wis_score" class="ability-score-input" />
+            </div>
+
+            <!-- CHA -->
+            <div class="ability-box">
+                <button type="roll"
+                        class="ability-title"
+                        name="roll_ChaCheck"
+                        value="/roll @{check_roll} + @{cha_mod}">
+                    CHA
+                </button>
+                <div class="ability-score">
+                    <span name="attr_cha_mod_display"></span>
+                </div>
+                <input type="number" name="attr_cha_score" class="ability-score-input" />
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================== RIGHT COLUMN (60%) ==================== -->
+    <div class="sheet-right">
+
+        <!-- ===== STATIC TOP CONTROLS ===== -->
+        <div class="static-right-top">
+
+            <!-- Proficiency Bonus -->
+            <div class="proficiency-box">
+                <span class="prof-label">Proficiency Bonus</span>
+                <span class="prof-value" name="attr_prof_bonus_display">+3</span>
+            </div>
+
+            <!-- Advantage / Disadvantage -->
+            <div class="adv-dis-box">
+                <button type="action" name="act_toggle_adv" class="adv-btn">Advantage</button>
+                <span class="adv-slash">/</span>
+                <button type="action" name="act_toggle_dis" class="dis-btn">Disadvantage</button>
+            </div>
+
+        </div>
+
+        <!-- ===== PAGE CONTENT ===== -->
+        <div class="page page-core">
+            <div class="character-info-row">
+                <div class="info-field">
+                    <label class="info-label">Race</label>
+                    <input type="text" name="attr_race" class="info-input" />
+                </div>
+                <div class="info-field">
+                    <label class="info-label">Subrace</label>
+                    <input type="text" name="attr_subrace" class="info-input" />
+                </div>
+                <div class="info-field">
+                    <label class="info-label">Alignment</label>
+                    <input type="text" name="attr_alignment" class="info-input" list="alignment-list" />
+                    <datalist id="alignment-list">
+                        <option value="Lawful Good">
+                        <option value="Lawful Neutral">
+                        <option value="Lawful Evil">
+                        <option value="Neutral Good">
+                        <option value="True Neutral">
+                        <option value="Neutral Evil">
+                        <option value="Chaotic Good">
+                        <option value="Chaotic Neutral">
+                        <option value="Chaotic Evil">
+                </div>
+            </div>
+            <div class="character-levels-box">
+                <fieldset class="repeating_levels">
+                    <div class="level-entry">
+                        <input type="text" name="attr_class" class="level-input" placeholder="Class" />
+                        <input type="text" name="attr_subclass" class="level-input" placeholder="Subclass" />
+                        <input type="number" name="attr_level" class="level-input level-number" placeholder="Level" min="0" value="1" />
+                    </div>
+                </fieldset>
+                <div class="levels-bottom">
+                    <div class="levels-bottom">
+                        <!-- EXP Tracker -->
+                        <div class="exp-tracker">
+                            <label class="exp-label">Experience</label>
+                            <input type="number"
+                                   name="attr_exp_current"
+                                   class="exp-input"
+                                   placeholder="Current" />
+                            <span class="exp-slash">/</span>
+                            <input type="number"
+                                   name="attr_exp_next"
+                                   class="exp-input"
+                                   list="exp-levels"
+                                   placeholder="To next Level" />
+                            <datalist id="exp-levels">
+                                <option value="0" label="Level 1: 0 XP">
+                                <option value="300" label="Level 2: 300 XP">
+                                <option value="900" label="Level 3: 900 XP">
+                                <option value="2700" label="Level 4: 2,700 XP">
+                                <option value="6500" label="Level 5: 6,500 XP">
+                                <option value="14000" label="Level 6: 14,000 XP">
+                                <option value="23000" label="Level 7: 23,000 XP">
+                                <option value="34000" label="Level 8: 34,000 XP">
+                                <option value="48000" label="Level 9: 48,000 XP">
+                                <option value="64000" label="Level 10: 64,000 XP">
+                                <option value="85000" label="Level 11: 85,000 XP">
+                                <option value="100000" label="Level 12: 100,000 XP">
+                                <option value="120000" label="Level 13: 120,000 XP">
+                                <option value="140000" label="Level 14: 140,000 XP">
+                                <option value="165000" label="Level 15: 165,000 XP">
+                                <option value="195000" label="Level 16: 195,000 XP">
+                                <option value="225000" label="Level 17: 225,000 XP">
+                                <option value="265000" label="Level 18: 265,000 XP">
+                                <option value="305000" label="Level 19: 305,000 XP">
+                                <option value="355000" label="Level 20: 355,000 XP">
+                            </datalist>
+                        </div>
+                    
+                        <!-- Character Level Total -->
+                        <div class="character-level-total">
+                            <label class="total-label">Character Level</label>
+                            <span class="total-value" name="attr_character_level">0</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="page page-combat">Combat content</div>
+        <div class="page page-inventory">Inventory content</div>
+        <div class="page page-spells">Spells content</div>
+        <div class="page page-bio">Bio content</div>
+
+    </div>
 </div>
 
-<div class="page combat-page" style="display:none;">
-    <!-- Combat page content -->
-</div>
+<!-- ==================== SHEET WORKER ==================== -->
+<script type="text/worker">
 
-<div class="page inventory-page" style="display:none;">
-    <!-- Inventory page content -->
-</div>
+    /* ==================== PAGE SWITCHING ==================== */
+    on("clicked:core", () => setAttrs({ current_page: "core" }));
+    on("clicked:combat", () => setAttrs({ current_page: "combat" }));
+    on("clicked:inventory", () => setAttrs({ current_page: "inventory" }));
+    on("clicked:spells", () => setAttrs({ current_page: "spells" }));
+    on("clicked:bio", () => setAttrs({ current_page: "bio" }));
 
-<div class="page spells-page" style="display:none;">
-    <!-- Spells page content -->
-</div>
+    /* ==================== ADV / DIS LOGIC ==================== */
+    const rollForState = (state) => {
+        if (state === "adv") return "2d20kh1";
+        if (state === "dis") return "2d20kl1";
+        return "1d20";
+    };
+    
+    on("clicked:toggle_adv", () => {
+        getAttrs(["adv_state"], v => {
+            const current = v.adv_state || "none";
+            const next = current === "adv" ? "none" : "adv";
+            setAttrs({
+                adv_state: next,
+                check_roll: rollForState(next)
+            });
+        });
+    });
+    
+    on("clicked:toggle_dis", () => {
+        getAttrs(["adv_state"], v => {
+            const current = v.adv_state || "none";
+            const next = current === "dis" ? "none" : "dis";
+            setAttrs({
+                adv_state: next,
+                check_roll: rollForState(next)
+            });
+        });
+    });
 
-<div class="page bio-page" style="display:none;">
-    <!-- Bio page content -->
-</div>
+    /* ==================== ABILITY MODIFIERS ==================== */
+    const abilities = ["str","dex","con","int","wis","cha"];
+
+    const calcMod = (score) => {
+        const s = parseInt(score,10);
+        if (isNaN(s)) return 0;
+        return Math.floor((s - 10) / 2);
+    };
+
+    const format = (m) => (m >= 0 ? "+" : "") + m;
+
+    on("sheet:opened", () => {
+        const attrs = [];
+        abilities.forEach(a => {
+            attrs.push(`${a}_score`, `${a}_mod`, `${a}_mod_display`);
+        });
+
+        getAttrs(attrs, v => {
+            const out = {};
+            abilities.forEach(a => {
+                const score = v[`${a}_score`] || 10;
+                const mod = calcMod(score);
+                out[`${a}_score`] = score;
+                out[`${a}_mod`] = mod;
+                out[`${a}_mod_display`] = format(mod);
+            });
+            setAttrs(out);
+        });
+    });
+
+    abilities.forEach(a => {
+        on(`change:${a}_score`, () => {
+            getAttrs([`${a}_score`], v => {
+                const mod = calcMod(v[`${a}_score`]);
+                setAttrs({
+                    [`${a}_mod`]: mod,
+                    [`${a}_mod_display`]: format(mod)
+                });
+            });
+        });
+    });
+
+    /* ==================== ALIGNMENT DROPDOWN ==================== */
+    const alignments = [
+        "Lawful Good",
+        "Lawful Neutral", 
+        "Lawful Evil",
+        "Neutral Good",
+        "True Neutral",
+        "Neutral Evil",
+        "Chaotic Good",
+        "Chaotic Neutral",
+        "Chaotic Evil"
+    ];
+
+    // Handle alignment dropdown clicks
+    on("clicked:alignment_option", (eventInfo) => {
+        const value = eventInfo.htmlAttributes["data-value"];
+        if (value) {
+            setAttrs({ alignment: value });
+        }
+    });
+
+    /* ==================== PROFICIENCY BONUS CALCULATION ==================== */
+    const calculateProficiencyBonus = (characterLevel) => {
+        if (characterLevel <= 0) {
+            return { prof_bonus: 0, prof_bonus_display: "+0" };
+        }
+        
+        // D&D 5e proficiency bonus: +2 at levels 1-4, increases by +1 every 4 levels
+        // Formula: floor((level - 1) / 4) + 2
+        const bonus = Math.floor((characterLevel - 1) / 4) + 2;
+        const display = (bonus >= 0 ? "+" : "") + bonus;
+        
+        return { prof_bonus: bonus, prof_bonus_display: display };
+    };
+    
+    /* ==================== CHARACTER LEVEL CALCULATION ==================== */
+    const calculateCharacterLevel = () => {
+        getSectionIDs("repeating_levels", ids => {
+            if (ids.length === 0) {
+                setAttrs({ 
+                    character_level: 0,
+                    ...calculateProficiencyBonus(0)
+                });
+                return;
+            }
+            
+            const attrs = ids.map(id => `repeating_levels_${id}_level`);
+            getAttrs(attrs, v => {
+                let total = 0;
+                ids.forEach(id => {
+                    const levelValue = v[`repeating_levels_${id}_level`];
+                    // Only process if the attribute exists and has been set (not empty/undefined)
+                    if (levelValue !== undefined && levelValue !== "" && levelValue !== null) {
+                        const level = parseInt(levelValue, 10);
+                        if (!isNaN(level) && level > 0) {
+                            total += level;
+                        }
+                    }
+                });
+                
+                const profBonus = calculateProficiencyBonus(total);
+                setAttrs({ 
+                    character_level: total,
+                    ...profBonus
+                });
+            });
+        });
+    };
+    
+    // Calculate on sheet open
+    on("sheet:opened", () => {
+        calculateCharacterLevel();
+    });
+    
+    // Calculate when level values
+    on("change:repeating_levels", () => {
+        calculateCharacterLevel();
+    });
+    
+    // Calculate when items are removed
+    on("remove:repeating_levels", () => {
+        calculateCharacterLevel();
+    });
+</script>
